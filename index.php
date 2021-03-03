@@ -93,3 +93,22 @@ function hourglassSum($arr)
     return max($sum);
 }
 //-----------------------------------------------------
+$arr = array(4, 2, 3, 1);
+function countSwaps($arr)
+{
+    $count = 0;
+    $size = sizeof($arr) - 1;
+    for ($i = $size; $i >= 0; $i--) {
+        for ($j = 0; $j <= ($i - 1); $j++)
+            if ($arr[$j] > $arr[$j + 1]) {
+                $k = $arr[$j];
+                $arr[$j] = $arr[$j + 1];
+                $arr[$j + 1] = $k;
+                $count++;
+            }
+        }
+        echo "Array is sorted in $count swaps.".PHP_EOL;
+        echo "First Element: $arr[0]".PHP_EOL;
+        echo "Last Element: ".end($arr).PHP_EOL;
+}
+countSwaps($arr, $count);
