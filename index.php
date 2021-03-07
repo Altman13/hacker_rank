@@ -112,3 +112,24 @@ function countSwaps($arr)
         echo "Last Element: ".end($arr).PHP_EOL;
 }
 countSwaps($arr, $count);
+
+//-----------------------------------------------------
+$string = array('aba', 'baba', 'aba', 'xzxb');
+$queries = array('aba', 'xzxb', 'ab');
+
+function matchingStrings($string, $queries)
+{
+    $count = 0;
+    $ret = array();
+    for ($i = 0; $i < count($queries); $i++) {
+        for ($j = 0; $j < count($string); $j++) {
+            if ($queries[$i] == $string[$j]) {
+                $count++;
+            }
+        }
+        array_push($ret, $count);
+        $count = 0;
+    }
+    return $ret;
+}
+matchingStrings($string, $queries);
