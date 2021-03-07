@@ -2,9 +2,9 @@
 <?php
 $ar = [6, 5, 2, 3, 5, 2, 2, 1, 1, 5, 1, 3, 3, 3, 5];
 $count = 0;
-$arr_count_values=array_count_values ($ar);
+$arr_count_values = array_count_values($ar);
 foreach ($arr_count_values as $item) {
-    $count+=floor($item/2);
+    $count += floor($item / 2);
 }
 return $count;
 //-----------------------------------------------------
@@ -32,18 +32,18 @@ function countingValleys($steps, $path)
 
 echo countingValleys($steps, $path);
 //-----------------------------------------------------
-function jumpingOnClouds($c) {
+function jumpingOnClouds($c)
+{
     $jump_counts = 0;
     for ($i = 0; $i < count($c) - 1; $i++) {
         if (isset($c[$i + 1])) {
             if (isset($c[$i + 2]) && $c[$i + 2] == 0) {
-                $i+=1;
+                $i += 1;
+                $jump_counts++;
+            } elseif ($c[$i + 1] == 0) {
                 $jump_counts++;
             }
-            elseif($c[$i + 1] == 0){
-                $jump_counts++;
-            }
-            }
+        }
     }
     return $jump_counts;
 }
@@ -54,7 +54,7 @@ function repeatedString($s, $n)
     $string_lenght = count(str_split($s));
     $number_of_char = intval($n / $string_lenght);
     $tt = 0;
-    if ($n < $string_lenght){
+    if ($n < $string_lenght) {
         $tt = substr_count($s, 'a', 0, $n);
     }
     $result = $n - ($number_of_char * $string_lenght);
@@ -63,14 +63,14 @@ function repeatedString($s, $n)
         $t = $tt;
     } else {
         $r = substr_count(substr($s, 0, $result), 'a');
-        $t=$number_of_char*$sum_of_a+$r;
+        $t = $number_of_char * $sum_of_a + $r;
     }
     return $t;
 }
 //-----------------------------------------------------
 
 $arr = array(
-    array(-1, -1, 0 ,-9 ,-2 ,-2),
+    array(-1, -1, 0, -9, -2, -2),
     array(-2, -1, -6, -8, -2, -5),
     array(-1, -1, -1, -2, -3, -4),
     array(-1, -9, -2, -4, -4, -5),
@@ -80,13 +80,13 @@ $arr = array(
 
 function hourglassSum($arr)
 {
-    $sum=array();
+    $sum = array();
     for ($j = 0; $j < count($arr); $j++) {
         for ($i = 0; $i < count($arr); $i++) {
             if (isset($arr[$j][$i + 2]) && isset($arr[$j + 2][$i])) {
-                array_push($sum,($arr[$j][$i])+($arr[$j][$i + 1])+($arr[$j][$i + 2])
-                                    +($arr[$j + 1][$i + 1])
-                +($arr[$j + 2][$i])+($arr[$j + 2][$i + 1])+($arr[$j + 2][$i + 2]));
+                array_push($sum, ($arr[$j][$i]) + ($arr[$j][$i + 1]) + ($arr[$j][$i + 2])
+                    + ($arr[$j + 1][$i + 1])
+                    + ($arr[$j + 2][$i]) + ($arr[$j + 2][$i + 1]) + ($arr[$j + 2][$i + 2]));
             }
         }
     }
@@ -106,10 +106,10 @@ function countSwaps($arr)
                 $arr[$j + 1] = $k;
                 $count++;
             }
-        }
-        echo "Array is sorted in $count swaps.".PHP_EOL;
-        echo "First Element: $arr[0]".PHP_EOL;
-        echo "Last Element: ".end($arr).PHP_EOL;
+    }
+    echo "Array is sorted in $count swaps." . PHP_EOL;
+    echo "First Element: $arr[0]" . PHP_EOL;
+    echo "Last Element: " . end($arr) . PHP_EOL;
 }
 countSwaps($arr, $count);
 
@@ -133,3 +133,17 @@ function matchingStrings($string, $queries)
     return $ret;
 }
 matchingStrings($string, $queries);
+
+//-----------------------------------------------------
+$d = 4;
+$a = array(1, 2, 3, 4, 5);
+
+function rotLeft($a, $d)
+{
+    $temp_arr = $a;
+    $new_array = array();
+    $new_array = array_merge(array_splice($temp_arr, $d), array_splice($a, 0, $d));
+    return $new_array;
+}
+
+rotLeft($a, $d);
