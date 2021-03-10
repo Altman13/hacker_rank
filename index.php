@@ -14,7 +14,7 @@ $path = str_split('DUDDDUUDUU');
 function countingValleys($steps, $path)
 {
     $points = array();
-    $vallleys = 0;
+    $valleys = 0;
     for ($i = 0; $i < $steps; $i++) {
         if ($path[$i] == 'U') {
             array_push($points, 1);
@@ -23,11 +23,11 @@ function countingValleys($steps, $path)
         }
         if (array_sum($points) == 0 && $i >= 1) {
             if ($points[$i] != -1) {
-                $vallleys++;
+                $valleys++;
             }
         }
     }
-    return  $vallleys;
+    return  $valleys;
 }
 
 echo countingValleys($steps, $path);
@@ -51,13 +51,13 @@ function jumpingOnClouds($c)
 function repeatedString($s, $n)
 {
     $sum_of_a = substr_count($s, 'a');
-    $string_lenght = count(str_split($s));
-    $number_of_char = intval($n / $string_lenght);
+    $string_length = count(str_split($s));
+    $number_of_char = intval($n / $string_length);
     $tt = 0;
-    if ($n < $string_lenght) {
+    if ($n < $string_length) {
         $tt = substr_count($s, 'a', 0, $n);
     }
-    $result = $n - ($number_of_char * $string_lenght);
+    $result = $n - ($number_of_char * $string_length);
     $t = 0;
     if ($tt) {
         $t = $tt;
@@ -147,3 +147,23 @@ function rotLeft($a, $d)
 }
 
 rotLeft($a, $d);
+
+//-----------------------------------------------------
+$q = array(1, 2, 5, 3, 4, 7, 8, 6);
+
+function minimumBribes($q)
+{
+    $count = 0;
+    for ($i = count($q) - 1; $i >= 0; $i--) {
+        if ($q[$i] - ($i + 1) > 2) {
+            echo "Too chaotic" . PHP_EOL;
+            return;
+        } else {
+            for ($j = $q[$i] - 2; $j < $i; $j++)
+                if (isset($q[$j]))
+                    if ($q[$j] > $q[$i]) $count++;
+        }
+    }
+    echo $count . PHP_EOL;
+}
+minimumBribes($q);
