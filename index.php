@@ -167,3 +167,12 @@ function minimumBribes($q)
     echo $count . PHP_EOL;
 }
 minimumBribes($q);
+//-----------------------------------------------------
+$arr = array(2, 3, 1, 3);
+function birthdayCakeCandles($arr)
+{
+    $count = array_count_values($arr);
+    ksort($count);
+    return end($count);
+}
+birthdayCakeCandles($arr);
