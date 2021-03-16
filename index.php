@@ -176,3 +176,25 @@ function birthdayCakeCandles($arr)
     return end($count);
 }
 birthdayCakeCandles($arr);
+
+//-----------------------------------------------------
+$a = array(17, 28, 30);
+$b = array(99, 16, 8);
+
+// Complete the compareTriplets function below.
+function compareTriplets($a, $b) {
+    $temp = array('a' => 0, 'b' => 0);
+    for ($i = 0; $i < count($a); $i++) {
+        if ($a[$i] == $b[$i]) {
+            $temp['a'] += 0;
+            $temp['b'] += 0;
+        } else if ($a[$i] > $b[$i]) {
+            $temp['a'] += 1;
+            $temp['b'] += 0;
+        } else if ($a[$i] < $b[$i]) {
+            $temp['a'] += 0;
+            $temp['b'] += 1;
+        }
+    }
+    return $temp;
+}
