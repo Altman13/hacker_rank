@@ -182,7 +182,8 @@ $a = array(17, 28, 30);
 $b = array(99, 16, 8);
 
 // Complete the compareTriplets function below.
-function compareTriplets($a, $b) {
+function compareTriplets($a, $b)
+{
     $temp = array('a' => 0, 'b' => 0);
     for ($i = 0; $i < count($a); $i++) {
         if ($a[$i] == $b[$i]) {
@@ -197,4 +198,28 @@ function compareTriplets($a, $b) {
         }
     }
     return $temp;
+}
+
+$arr = array(1, 3, 5, 2, 4, 6, 7);
+//$arr = array(4, 3, 1, 2);
+//-----------------------------------------------------
+//TODO: требует доработки
+function minimumSwaps($arr)
+{
+    $count = 0;
+    for ($i = 0; $i < count($arr); $i++) {
+        if ($arr[$i] != $i + 1) {
+            $t = $i;
+            while ($arr[$t] != $i + 1) {
+                $t++;
+            }
+            $temp = $arr[$t];
+            // echo $temp .' '. $arr[$t] .' '.$arr[$i];
+            $arr[$t] = $arr[$i];
+            $arr[$i] = $temp;
+            $count++;
+        }
+    }
+    //print_r($arr);
+    return $count;
 }
