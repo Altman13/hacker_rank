@@ -220,6 +220,27 @@ function minimumSwaps($arr)
             $count++;
         }
     }
-    //print_r($arr);
+
     return $count;
 }
+//-----------------------------------------------------
+$magazine = 'give me one grand today night';
+$note = 'give one grand today';
+function checkMagazine($magazine, $note)
+{
+    $ret = 'Yes';
+    $magazine = explode(' ', $magazine);
+    $note = explode(' ', $note);
+    for ($i = 0; $i < count($note); $i++) {
+        if (in_array($note[$i], $magazine) == false) {
+            $ret = 'No';
+            echo $ret;
+            return;
+        } else {
+            $key = array_search($note[$i], $magazine);
+            unset($magazine[$key]);
+        }
+    }
+    echo $ret;
+}
+checkMagazine($magazine, $note);
