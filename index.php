@@ -214,13 +214,11 @@ function minimumSwaps($arr)
                 $t++;
             }
             $temp = $arr[$t];
-            // echo $temp .' '. $arr[$t] .' '.$arr[$i];
             $arr[$t] = $arr[$i];
             $arr[$i] = $temp;
             $count++;
         }
     }
-
     return $count;
 }
 //-----------------------------------------------------
@@ -228,19 +226,36 @@ $magazine = 'give me one grand today night';
 $note = 'give one grand today';
 function checkMagazine($magazine, $note)
 {
-    $ret = 'Yes';
     $magazine = explode(' ', $magazine);
     $note = explode(' ', $note);
     for ($i = 0; $i < count($note); $i++) {
         if (in_array($note[$i], $magazine) == false) {
-            $ret = 'No';
-            echo $ret;
+            echo 'No';
             return;
         } else {
             $key = array_search($note[$i], $magazine);
             unset($magazine[$key]);
         }
     }
-    echo $ret;
+    echo 'Yes';
 }
 checkMagazine($magazine, $note);
+
+//-----------------------------------------------------
+$s1 = 'hello';
+$s2 = 'world';
+function twoStrings($s1, $s2)
+{
+    $ret = '';
+    $s1 = array_unique(str_split($s1));
+    $s2 = array_unique(str_split($s2));
+    $array_intersect = array_intersect($s1, $s2);
+    if (count($array_intersect) > 0) {
+        $ret = 'YES';
+    } else {
+        $ret = 'NO';
+    }
+    return $ret;
+}
+
+twoStrings($s1, $s2);
